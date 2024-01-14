@@ -6,7 +6,7 @@ import time
 # Define your Spotify API credentials
 SPOTIPY_CLIENT_ID = "d2289b4d890f4a39b027eb0d427c670d"
 SPOTIPY_CLIENT_SECRET = "6eac9c07cf984a82a8f01f51011ff36f4"
-SPOTIPY_REDIRECT_URI = "https://spoti16.streamlit.app/callback"  # Change this to your redirect URI
+SPOTIPY_REDIRECT_URI = "https://spoti16.streamlit.app/"  # Change this to your redirect URI
 
 def main():
     st.set_page_config(layout="wide")
