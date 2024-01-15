@@ -6,7 +6,7 @@ import time
 # Define your Spotify API credentials
 SPOTIPY_CLIENT_ID = "d2289b4d890f4a39b027eb0d427c670d"
 SPOTIPY_CLIENT_SECRET = "6eac9c07cf984a82a8f01f51011ff36f4"
-SPOTIPY_REDIRECT_URI = "https://spoti16.streamlit.app/"  # Change this to your redirect URI
+SPOTIPY_REDIRECT_URI = "https://spoti16.streamlit.app/callback"  # Change this to your redirect URI
 
 def main():
     st.set_page_config(layout="wide")
@@ -20,15 +20,16 @@ def main():
         scope="user-library-read",
     )
 
-    token_info = sp_oauth.get_cached_token()
-    if token_info is None or time.time() > token_info["expires_at"]:
-        # Display a login button at the beginning
-        st.warning("You are not logged in with Spotify.")
-        auth_url = sp_oauth.get_authorize_url()
-        if st.button("Login with Spotify"):
-            st.markdown(f"Click [here]({auth_url}) to log in with your Spotify account.")
-    else:
+    token = st.experimental_get_query_params().get('token', [None])[0]
+    if token:
+        # User is authenticated, proceed with your logic
         st.success("You are logged in with Spotify.")
+        # Your existing code for logged in users...
+    else:
+        # User is not authenticated
+        st.warning("You are not logged in with Spotify.")
+        login_url = "http://localhost:5000"  # URL to start OAuth flow
+        st.markdown(f"Click [here]({login_url}) to log in with your Spotify account.")
 
         tab1, tab2, tab3, tab4 = st.tabs(["Single Market Search", "Multi-Country Search", "Excel Display", "Playlist Highlight"])
 
