@@ -6,7 +6,7 @@ import time
 # Define your Spotify API credentials
 SPOTIPY_CLIENT_ID = "d2289b4d890f4a39b027eb0d427c670d"
 SPOTIPY_CLIENT_SECRET = "6eac9c07cf984a82a8f01f51011ff36f4"
-SPOTIPY_REDIRECT_URI = "https://spoti16.streamlit.app/callback"  # Change this to your redirect URI
+SPOTIPY_REDIRECT_URI = "http://localhost:5000/callback"  # Change this to your redirect URI
 
 def main():
     st.set_page_config(layout="wide")
@@ -28,7 +28,7 @@ def main():
     else:
         # User is not authenticated
         st.warning("You are not logged in with Spotify.")
-        login_url = "https://spoti16.streamlit.app/"  # URL to start OAuth flow
+        login_url = "http://localhost:5000"  # URL to start OAuth flow
         st.markdown(f"Click [here]({login_url}) to log in with your Spotify account.")
 
         tab1, tab2, tab3, tab4 = st.tabs(["Single Market Search", "Multi-Country Search", "Excel Display", "Playlist Highlight"])
