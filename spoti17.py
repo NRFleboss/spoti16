@@ -28,7 +28,7 @@ def main():
     else:
         # User is not authenticated
         st.warning("You are not logged in with Spotify.")
-        login_url = "http://localhost:5000"  # URL to start OAuth flow
+        login_url = "https://spoti16.streamlit.app/"  # URL to start OAuth flow
         st.markdown(f"Click [here]({login_url}) to log in with your Spotify account.")
 
         tab1, tab2, tab3, tab4 = st.tabs(["Single Market Search", "Multi-Country Search", "Excel Display", "Playlist Highlight"])
